@@ -13,6 +13,6 @@
     "koa-router": "^7.4.0"
   },
   "scripts": {
-    "startdev": "cd dist && node ."
+    "start-dev": "cd dist && node ."
   }
 }

@@ -7,5 +7,10 @@
     "rootDir": "src",
     "lib": ["esnext"],
     "noErrorTruncation": true
-  }
+  },
+  "references": [
+    {
+      "path": "../../modules/magic"
+    }
+  ]
 }
