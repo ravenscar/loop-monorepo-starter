@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+. $LERNA_ROOT_PATH/bin/loop-log
+NPM_BUILD=$(jq ."scripts"."build" package.json)
+
+if [ -d "src" ]; then
+  if [ "$NPM_BUILD" == "null" ]; then
+    $LERNA_ROOT_PATH/bin/loop-tsc-build
+  else
+    log custom build via npm script
+    npm run build
+  fi
+fi

@@ -1,0 +1,8 @@
+{
+  "name": "loop-monorepo-starter-tsconfig-base",
+  "private": true,
+  "version": "1.0.0",
+  "description": "base tsconfig for loop monorepo starter projects",
+  "main": "tsconfig.json",
+  "license": "UNLICENSED"
+}

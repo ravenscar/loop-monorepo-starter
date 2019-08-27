@@ -1,0 +1,5 @@
+{
+  "extends": "loop-monorepo-starter-tsconfig-base",
+  "files": [],
+  "references": []
+}

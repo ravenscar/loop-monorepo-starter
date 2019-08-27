@@ -1,0 +1,111 @@
+artifacts/
+dist/
+Thumbs.db
+.DS_Store
+*.bak
+*~
+*.swp
+node_modules
+.idea/
+.tmp/
+coverage/
+*.iml
+.vs/
+coverage-report.html
+.vscode/
+bmr-*.json
+cmr-*.json
+*.sqlite3
+*.db
+*.back
+npm-debug.log
+haul-debug.log
+main.jsbundle
+main.jsbundle.map
+main.jsbundle.meta
+.cache-loader
+
+##iOS
+## Build generated
+build/
+DerivedData
+build.xcarchive
+**/ios/assets
+**/ios/*/assets/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# CocoaPods
+Pods/
+
+
+##Android
+# Built application files
+/*/build/
+**/app/src/bundle/
+google-services.json
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Gradle generated files
+.gradle/
+
+# Signing files
+.signing/
+
+# User-specific configurations
+.idea/libraries/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+*.iml
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+lerna-debug.log
+tsconfig.tmp.json
+stats*.json
+*.zip
+.terraform/
+bundle/
+env-bundle/
+ignore-randome-thingy
+tsconfig.tsbuildinfo
+**/Images.xcassets/AppIcon.appiconset/*.png
+.env

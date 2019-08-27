@@ -1,0 +1,104 @@
+{
+  "name": "loop-monorepo-starter",
+  "private": true,
+  "version": "2.104.4",
+  "description": "loop monorepo starter project",
+  "dependencies": {
+    "aws-sdk": "^2.481.0",
+    "lodash": "^4.17.15",
+    "source-map-support": "^0.5.12",
+    "sqlite3": "^4.0.9",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "@types/jest": "^24.0.15",
+    "@types/lodash": "^4.14.134",
+    "@types/node": "10.14.10",
+    "@types/uuid": "^3.4.4",
+    "aws-sdk-mock": "^4.4.0",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.3",
+    "husky": "^2.5.0",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "lerna": "^3.16.4",
+    "loop-monorepo-starter-tsconfig-base": "./modules/tsconfig-base/",
+    "maddis-code-rules": "^1.2.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "~3.5.2",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
+  },
+  "scripts": {
+    "loop": "bash -ic 'npm run loop:$0 -- $@'",
+    "loop:build": "bash -ic 'echo building $0'",
+    "bootstrap": "lerna bootstrap --force-local --ignore=loop-monorepo-starter",
+    "init": "npm run clean && npm install && npm run bootstrap && npm run update-refs && npm run build && npm run bundleall && npm run copy-artifacts",
+    "prettier": "prettier --loglevel warn --write '**/src/**/*.ts' '**/src/**/*.tsx'",
+    "fixlint": "tslint --fix -c tslint.json '**/src/**/*.{ts,tsx}' --exclude '**/node_modules/**' --exclude '**/dist/**' --project tsconfig-lint.json",
+    "lint": "tslint -c tslint.json '**/src/**/*.{ts,tsx}' --exclude '**/node_modules/**' --exclude '**/dist/**' --project tsconfig-lint.json",
+    "test": "jest --silent",
+    "test:watch": "jest --watch",
+    "coverage": "jest --silent --coverage",
+    "clean": "npm run clean-git-ignore",
+    "clean-node-modules": "lerna clean --yes",
+    "clean-dist": "lerna exec --stream -- \\$LERNA_ROOT_PATH/bin/loop-clean-project",
+    "clean-git-ignore": "git clean -dfX",
+    "build": "npm run clean-dist && npm run lint && npm run buildall && npm test",
+    "buildall": "lerna exec --ignore loop-monorepo-starter --stream --concurrency 1 -- \\$LERNA_ROOT_PATH/bin/loop-build-module",
+    "bundleall": "lerna run --ignore loop-monorepo-starter --stream --concurrency 1 bundle",
+    "buildmod": "lerna exec --scope $npm_config_mod --stream -- \\$LERNA_ROOT_PATH/bin/loop-build-module",
+    "buildnew": "lerna exec --ignore loop-monorepo-starter --stream --since -- \\$LERNA_ROOT_PATH/bin/loop-build-module",
+    "copy-artifacts": "lerna exec --parallel --stream --concurrency 1 -- \\$LERNA_ROOT_PATH/bin/loop-copy-artifact",
+    "update-refs": "cd bin && ts-node patch-tsconfig-refs.ts",
+    "audit-monorepo": "cd bin && ts-node audit-monorepo.ts",
+    "watch": "tsc -b -w -i --verbose",
+    "find-outdated": "cd bin && ts-node find-outdated.ts",
+    "remove-git-in-npm-modules": "find applications -name .git | xargs rm -rf"
+  },
+  "artifacts": [
+    "bin",
+    "bin/slack-message"
+  ],
+  "jest": {
+    "globals": {
+      "DEVELOPER_FLAG": "",
+      "DEVELOPER_HOST": "",
+      "window": {},
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    },
+    "globalSetup": "./jest-global-setup.js",
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "\\.(gql|graphql)$": "jest-transform-graphql",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(src|test)/.*(\\.|-|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "json",
+      "js",
+      "jsx"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "lerna run lint --stream --scope loop-monorepo-starter && lerna run test --stream --scope loop-monorepo-starter"
+    }
+  }
+}

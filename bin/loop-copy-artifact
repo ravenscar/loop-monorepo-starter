@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+. $LERNA_ROOT_PATH/bin/loop-log
+
+
+PACKAGE_NAME=$(jq ."name" package.json -r)
+PACKAGE_ARTIFACTS=$(jq ."artifacts" package.json)
+
+if [ "$PACKAGE_ARTIFACTS" != "null" ]; then
+  log removing old artifact directory
+  rm -rf $LERNA_ROOT_PATH/artifacts/$PACKAGE_NAME
+  
+  log making artifact directory
+  mkdir -p $LERNA_ROOT_PATH/artifacts/$PACKAGE_NAME
+  echo $npm_package_version > $LERNA_ROOT_PATH/artifacts/$PACKAGE_NAME/VERSION
+  git rev-parse --abbrev-ref HEAD > $LERNA_ROOT_PATH/artifacts/$PACKAGE_NAME/BRANCH
+
+  log copying artifact files
+  filters=('-r' '.' $(jq '.artifacts[] | "--include=\(.)"' package.json -r) '--exclude=*' $LERNA_ROOT_PATH/artifacts/$PACKAGE_NAME)
+  rsync --copy-links "${filters[@]}"
+fi

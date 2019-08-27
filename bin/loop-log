@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+MODULE_NAME=$(jq ."name" package.json  | sed 's/"//g')
+log() {
+  echo "$MODULE_NAME": "$@"
+}

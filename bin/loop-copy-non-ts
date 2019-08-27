@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+. $LERNA_ROOT_PATH/bin/loop-log
+
+if [ -d "src" ]; then
+  log copying non-typescript files from src to dest
+  cd src;
+  find . ! -name "*.ts" ! -name "*.tsx" ! -name "*.snap" -type f -exec rsync -R {} ../dist/ \;
+fi

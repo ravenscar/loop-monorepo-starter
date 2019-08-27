@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+. $LERNA_ROOT_PATH/bin/loop-log
+
+log removing dist directory && rm -rf dist
+log removing tsbuildinfo && rm -f tsconfig.tsbuildinfo

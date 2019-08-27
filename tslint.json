@@ -1,0 +1,8 @@
+{
+  "extends": ["maddis-code-rules/tslint"],
+  "rules": {
+    "no-unused-expression": true,
+    "no-floating-promises": true,
+    "await-promise": [true, "Bluebird", "IRestrictedQueryBuilder", "PromiseLike"]
+  }
+}

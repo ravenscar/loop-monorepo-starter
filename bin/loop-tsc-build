@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+. $LERNA_ROOT_PATH/bin/loop-log
+
+
+$LERNA_ROOT_PATH/bin/loop-copy-non-ts
+
+if [ -f "tsconfig.json" ]; then
+  log doing standard typescript build
+  tsc -b --verbose
+else
+  log no tsconfig.json, skipping typescript build
+fi

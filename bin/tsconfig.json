@@ -1,0 +1,8 @@
+{
+  "extends": "loop-monorepo-starter-tsconfig-base",
+  "compilerOptions": {
+    "composite": false,
+    "declarationMap": false,
+    "declaration": false
+  }
+}
