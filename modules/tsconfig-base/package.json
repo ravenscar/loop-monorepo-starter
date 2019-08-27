@@ -1,5 +1,5 @@
 {
-  "name": "loop-monorepo-starter-tsconfig-base",
+  "name": "@loop/tsconfig-base",
   "private": true,
   "version": "1.0.0",
   "description": "base tsconfig for loop monorepo starter projects",

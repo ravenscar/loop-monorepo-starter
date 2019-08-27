@@ -1,0 +1,9 @@
+{
+  "name": "@loop/magic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "example magic file",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "UNLICENSED"
+}

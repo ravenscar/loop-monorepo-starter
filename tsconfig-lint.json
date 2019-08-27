@@ -2,7 +2,6 @@
   "extends": "@loop/tsconfig-base",
   "compilerOptions": {
     "composite": false,
-    "declarationMap": false,
-    "declaration": false
+    "declarationMap": false
   }
 }

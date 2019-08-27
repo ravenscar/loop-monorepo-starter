@@ -108,8 +108,13 @@ const updateConfigForProject = async (name: string) => {
 };
 
 const updateProjects = async () => {
-  const mainProject = 'PDN-FIXME-monorepo';
-  const blacklist = ['PDN-FIXME-tsconfig-base', 'PDN-FIXME-terraform-shared'];
+  const mainProject = process.env.npm_package_name;
+
+  if (!mainProject) {
+    throw new Error('no process.env.npm_package_name, this is expected to be invoked from npm then lerna');
+  }
+
+  const blacklist = ['@loop/tsconfig-base'];
 
   const projects = (await getProjects()).filter((r) => blacklist.indexOf(r.name) === -1);
 

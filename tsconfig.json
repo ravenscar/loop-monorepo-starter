@@ -1,5 +1,9 @@
 {
-  "extends": "loop-monorepo-starter-tsconfig-base",
+  "extends": "@loop/tsconfig-base",
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "modules/tsconfig-base"
+    }
+  ]
 }
