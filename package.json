@@ -81,6 +81,7 @@
     "build:watch": "tsc -b -w -i --verbose",
     "monorepo:bootstrap": "lerna bootstrap --force-local && npm run util:remove-git-in-npm-modules",
     "monorepo:init": "npm run build:clean && npm run monorepo:bootstrap && npm run util:update-refs && npm run build:all",
+    "monorepo:husky": "npm run build:lint && npm run build:test",
     "util:update-refs": "cd bin && ts-node patch-tsconfig-refs.ts",
     "util:audit-monorepo": "cd bin && ts-node audit-monorepo.ts",
     "util:find-outdated": "cd bin && ts-node find-outdated.ts",
@@ -116,7 +117,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
-      "pre-push": "lerna run build:lint --stream --scope $npm_package_name && lerna run build:test --stream --scope $npm_package_name"
+      "pre-push": "lerna run monorepo:husky --stream"
     }
   }
 }
