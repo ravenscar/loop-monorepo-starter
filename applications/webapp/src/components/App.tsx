@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader';
 const reactLogo = require('./../assets/img/react_logo.svg');
 import './../assets/scss/App.scss';
 
-class App extends React.Component<{}, undefined> {
+class App extends React.Component<{}> {
   public render() {
     return (
       <div className="app">
