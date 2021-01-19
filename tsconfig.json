@@ -6,6 +6,9 @@
       "path": "applications/server"
     },
     {
+      "path": "applications/webapp"
+    },
+    {
       "path": "modules/magic"
     }
   ]

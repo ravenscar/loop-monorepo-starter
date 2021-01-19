@@ -7,10 +7,10 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@loop/magic": "^1.0.0",
-    "@types/koa": "^2.0.49",
-    "@types/koa-router": "^7.0.42",
-    "koa": "^2.8.1",
-    "koa-router": "^7.4.0"
+    "@types/koa": "^2.11.6",
+    "@types/koa-router": "^7.4.1",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0"
   },
   "scripts": {
     "start-dev": "cd dist && node ."
